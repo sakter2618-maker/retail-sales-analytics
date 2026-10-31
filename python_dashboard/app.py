@@ -43,6 +43,23 @@ div[role="radiogroup"] > label:has(input:checked) p {{ color:#0B1020; font-weigh
 .reco {{ border-left:4px solid var(--c); }}
 .note {{ color:{MUTED}; font-size:.78rem; }}
 h1,h2,h3 {{ color:{TEXT}; }}
+/* ---- force readable colours (works even without .streamlit/config.toml) ---- */
+.stApp, .stApp p, .stApp span, .stApp label, .stApp li {{ color:{TEXT}; }}
+[data-testid="stWidgetLabel"] p, [data-testid="stWidgetLabel"] label {{ color:{MUTED} !important; font-size:.8rem; }}
+div[role="radiogroup"] > label p {{ color:{TEXT} !important; font-size:.92rem; margin:0; }}
+div[data-baseweb="select"] > div {{ background:{CARD} !important; border:1px solid {BORDER} !important; border-radius:10px; }}
+div[data-baseweb="select"] * {{ color:{TEXT} !important; }}
+div[data-baseweb="select"] svg {{ fill:{MUTED} !important; }}
+span[data-baseweb="tag"] {{ background:linear-gradient(90deg,{VIOLET},{CYAN}) !important; border-radius:8px; }}
+span[data-baseweb="tag"] * {{ color:#0B1020 !important; font-weight:600; }}
+div[data-baseweb="popover"] ul, div[data-baseweb="popover"] li {{ background:{CARD} !important; color:{TEXT} !important; }}
+[data-testid="stSlider"] [role="slider"] {{ background:{CYAN} !important; box-shadow:0 0 0 4px rgba(34,211,238,.25); }}
+[data-testid="stSlider"] [data-testid="stThumbValue"], [data-testid="stSlider"] div {{ color:{CYAN} !important; }}
+[data-testid="stSliderTickBarMin"], [data-testid="stSliderTickBarMax"] {{ color:{MUTED} !important; }}
+.topbar {{ background:{CARD}; border:1px solid {BORDER}; border-radius:14px; padding:12px 20px; margin-bottom:.6rem; }}
+.topbar .t {{ font-size:1.25rem; font-weight:800; color:{TEXT}; letter-spacing:.04em; }}
+.topbar .t span {{ color:{CYAN}; }}
+[data-testid="stMarkdownContainer"] h5 {{ color:{TEXT}; }}
 </style>""", unsafe_allow_html=True)
 
 
@@ -91,7 +108,7 @@ df = get_data()
 months = sorted(df["Month"].unique())
 labels = [pd.Timestamp(m).strftime("%b %Y") for m in months]
 
-st.markdown(f"<h2 style='margin:0'>📊 Retail & E-commerce <span style='color:{CYAN}'>Sales Analytics</span></h2>",
+st.markdown(f"<div class='topbar'><div class='t'>📊 RETAIL & E-COMMERCE <span>SALES ANALYTICS</span></div></div>",
             unsafe_allow_html=True)
 PAGES = ["Executive Overview", "Sales Trend", "Product & Category", "Customer Analytics", "Profit & Recommendations"]
 page = st.radio("page", PAGES, horizontal=True, label_visibility="collapsed")
