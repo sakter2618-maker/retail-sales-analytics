@@ -1,0 +1,51 @@
+{
+  "name": "Retail Neon Dark (Minimal)",
+  "dataColors": [
+    "#22D3EE",
+    "#A78BFA",
+    "#F472B6",
+    "#34D399",
+    "#FBBF24",
+    "#60A5FA",
+    "#FB7185",
+    "#2DD4BF"
+  ],
+  "background": "#131A33",
+  "foreground": "#E6EAF5",
+  "tableAccent": "#22D3EE",
+  "good": "#22D3A6",
+  "neutral": "#FBBF24",
+  "bad": "#FF5C7A",
+  "maximum": "#22D3EE",
+  "center": "#A78BFA",
+  "minimum": "#1E293B",
+  "firstLevelElements": "#E6EAF5",
+  "secondLevelElements": "#B8C0D9",
+  "thirdLevelElements": "#2A3355",
+  "fourthLevelElements": "#8B95B0",
+  "secondaryBackground": "#1B2444",
+  "backgroundLight": "#1B2444",
+  "backgroundNeutral": "#2A3355",
+  "textClasses": {
+    "callout": {
+      "fontSize": 28,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#FFFFFF"
+    },
+    "title": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E6EAF5"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E6EAF5"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#8B95B0"
+    }
+  }
+}
