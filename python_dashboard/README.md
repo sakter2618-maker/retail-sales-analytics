@@ -1,6 +1,6 @@
 # Python Dashboard (Streamlit + Plotly)
 
-Same 5 pages and neon-dark theme as the Power BI report, built from the cleaned CSVs in `../data`.
+5-page neon-dark dashboard built from the cleaned CSVs in `../data`.
 
 ```bash
 cd python_dashboard

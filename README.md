@@ -1,7 +1,9 @@
 # 🛒 Retail & E-commerce Sales, Customer & Product Analytics
-**Excel · Python (cleaning) · SQL · Power BI** — an end-to-end analytics project built for Data Analyst / BI Analyst portfolios.
+**Python (pandas) · SQL (PostgreSQL) · Streamlit · Plotly** — an end-to-end analytics project built for Data Analyst / BI Analyst portfolios.
 
 <!-- Dashboard screenshots go in /images (one per page) and can be shown here. -->
+
+**Live dashboard:** deployed on Streamlit Community Cloud (link added once confirmed).
 
 ## 1. Project objective
 Answer five business questions for a retail e-commerce business:
@@ -17,8 +19,7 @@ Answer five business questions for a retail e-commerce business:
 | Star schema | fact_orders + dim_customer, dim_product, dim_date | `data/` |
 | Business queries | SQL (`sql/02_schema_and_queries.sql`) | 12 queries, tested |
 | Validation | `03_validate.py` | hand-check + pandas + SQL agree |
-| Dashboard | Power BI (`powerbi/04_dax_measures.dax`, `retail_theme.json`) | 5-page interactive report |
-| Web dashboard | Python, Streamlit, Plotly (`python_dashboard/`) | The same 5 pages, deployed on Streamlit Community Cloud |
+| Dashboard | Python, Streamlit, Plotly (`python_dashboard/`) | 5-page interactive dashboard with filters, deployed on Streamlit Community Cloud |
 
 **Data quality fixes:** 120 duplicate orders removed · 35 missing dates · 80 missing + 25 negative/zero quantities removed · 220 missing discounts → 0 · 449 missing payment methods → "Unknown" · city spelling fixed (`tehran`, `Mashad`) · 30 orders with unknown customers removed.
 
@@ -59,8 +60,8 @@ Answer five business questions for a retail e-commerce business:
 ```bash
 python 01_clean_data.py     # builds /data
 python 03_validate.py       # prints validation checks
-# load /data into PostgreSQL/MySQL, run sql/02_schema_and_queries.sql
-# open Power BI, follow docs/05_powerbi_build_guide.md
+# load /data into PostgreSQL, run sql/02_schema_and_queries.sql
+cd python_dashboard && pip install -r requirements.txt && streamlit run app.py
 ```
 
 ## 9. Other portfolio projects

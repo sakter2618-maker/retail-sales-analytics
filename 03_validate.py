@@ -1,5 +1,5 @@
 """Independent validation: recompute headline numbers with pandas AND by hand on sample orders,
-then compare with the SQL/DAX definitions."""
+then compare with the SQL and dashboard definitions."""
 import pandas as pd, sqlite3
 f=pd.read_csv("data/fact_orders.csv"); c=pd.read_csv("data/dim_customer.csv")
 p=pd.read_csv("data/dim_product.csv"); d=pd.read_csv("data/dim_date.csv")
