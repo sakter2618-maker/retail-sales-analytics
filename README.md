@@ -1,8 +1,7 @@
 # 🛒 Retail & E-commerce Sales, Customer & Product Analytics
 **Excel · Python (cleaning) · SQL · Power BI** — an end-to-end analytics project built for Data Analyst / BI Analyst portfolios.
 
-![Dashboard overview](images/01_executive_overview.png)
-<!-- Add your Power BI screenshots into /images (one per page) -->
+<!-- Dashboard screenshots go in /images (one per page) and can be shown here. -->
 
 ## 1. Project objective
 Answer five business questions for a retail e-commerce business:
@@ -19,6 +18,7 @@ Answer five business questions for a retail e-commerce business:
 | Business queries | SQL (`sql/02_schema_and_queries.sql`) | 12 queries, tested |
 | Validation | `03_validate.py` | hand-check + pandas + SQL agree |
 | Dashboard | Power BI (`powerbi/04_dax_measures.dax`, `retail_theme.json`) | 5-page interactive report |
+| Web dashboard | Python, Streamlit, Plotly (`python_dashboard/`) | The same 5 pages, deployed on Streamlit Community Cloud |
 
 **Data quality fixes:** 120 duplicate orders removed · 35 missing dates · 80 missing + 25 negative/zero quantities removed · 220 missing discounts → 0 · 449 missing payment methods → "Unknown" · city spelling fixed (`tehran`, `Mashad`) · 30 orders with unknown customers removed.
 
@@ -62,3 +62,7 @@ python 03_validate.py       # prints validation checks
 # load /data into PostgreSQL/MySQL, run sql/02_schema_and_queries.sql
 # open Power BI, follow docs/05_powerbi_build_guide.md
 ```
+
+## 9. Other portfolio projects
+- [SEO Growth Agent (n8n)](https://github.com/sakter2618-maker/n8n-seo-growth-agent): a scheduled automation that audits a website's SEO, saves results to Google Sheets, emails a weekly report and proposes fixes as pull requests.
+- [Sutokotha demo store](https://github.com/sakter2618-maker/sutokotha): the test website the agent audits ([live site](https://sakter2618-maker.github.io/sutokotha/)).
