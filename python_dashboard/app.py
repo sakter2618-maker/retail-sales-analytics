@@ -16,7 +16,7 @@ BG, CARD, BORDER, TEXT, MUTED = "#0B1020", "#131A33", "#2A3355", "#E6EAF5", "#8B
 CYAN, VIOLET, PINK, GREEN, AMBER, BLUE = "#22D3EE", "#A78BFA", "#F472B6", "#34D399", "#FBBF24", "#60A5FA"
 GOOD, BAD = "#22D3A6", "#FF5C7A"
 CAT_COLORS = [CYAN, VIOLET, PINK, GREEN, AMBER, BLUE]
-SCALE = [[0, "#1B2347"], [0.5, VIOLET], [1, CYAN]]
+SCALE = [[0, "#18214A"], [0.2, "#243A8A"], [0.55, "#2F6FE0"], [1, "#22D3EE"]]  # deep navy -> blue -> cyan
 
 st.markdown(f"""
 <style>
@@ -217,8 +217,16 @@ elif page == "Sales Trend":
         show(style_fig(fig, 340, legend=True))
     with r:
         rm = M.region_month(cur)
-        fig = go.Figure(go.Heatmap(z=rm.values, x=[pd.Timestamp(c).strftime("%b %y") for c in rm.columns], y=rm.index,
-                                   colorscale=SCALE, colorbar=dict(tickfont=dict(color=MUTED))))
+        rm = rm.loc[rm.sum(axis=1).sort_values(ascending=False).index]   # biggest region on top
+        fig = go.Figure(go.Heatmap(
+            z=rm.values, x=[pd.Timestamp(c).strftime("%b %y") for c in rm.columns], y=list(rm.index),
+            colorscale=SCALE, xgap=3, ygap=3,
+            text=[[fmt_money(v) for v in row] for row in rm.values], texttemplate="%{text}",
+            textfont=dict(color="#FFFFFF", size=10),
+            colorbar=dict(thickness=10, len=0.9, tickfont=dict(color=MUTED), outlinewidth=0),
+            hovertemplate="%{y} · %{x}<br>Net Sales: %{z:,.0f}<extra></extra>"))
+        fig.update_yaxes(autorange="reversed", showgrid=False)
+        fig.update_xaxes(showgrid=False, tickangle=-45)
         show(style_fig(fig.update_layout(title="Net Sales: Region x Month"), 340))
     st.markdown("<span class='note'>2026 is a partial year (data ends Jun 2026) - compare like-for-like months.</span>", unsafe_allow_html=True)
 
@@ -314,9 +322,12 @@ else:
                                text=[f"{m*100:.1f}%" for m in db["Margin"]], textposition="outside"))
         show(style_fig(fig.update_layout(title="Profit Margin by Discount Band", yaxis_tickformat=".0%"), 330))
     mm = M.margin_matrix(cur)
-    fig = go.Figure(go.Heatmap(z=mm.values * 100, x=mm.columns, y=mm.index, colorscale=SCALE, zmin=0,
-                               text=np.round(mm.values * 100, 1), texttemplate="%{text}%",
-                               colorbar=dict(tickfont=dict(color=MUTED))))
+    fig = go.Figure(go.Heatmap(z=mm.values * 100, x=list(mm.columns), y=list(mm.index), colorscale=SCALE, zmin=0,
+                               xgap=3, ygap=3, text=np.round(mm.values * 100, 1), texttemplate="%{text}%",
+                               textfont=dict(color="#FFFFFF", size=11),
+                               colorbar=dict(thickness=10, tickfont=dict(color=MUTED), outlinewidth=0)))
+    fig.update_yaxes(autorange="reversed", showgrid=False)
+    fig.update_xaxes(showgrid=False)
     show(style_fig(fig.update_layout(title="Margin %: Region x Category"), 320))
     st.markdown("### Recommendations")
     o, a = ch["orders"], ch["aov"]
