@@ -117,7 +117,7 @@ f1, f2, f3, f4 = st.columns([2.2, 1, 1, 1])
 with f1:
     a, b = st.select_slider("Date range (month)", options=labels, value=(labels[-12], labels[-1]))
 def pick(label, values):
-    """Dropdown with 'All' on top (like the Power BI slicer). Returns the list of selected values."""
+    """Dropdown with 'All' on top (shows every value when 'All' is chosen). Returns the list of selected values."""
     choice = st.selectbox(label, ["All"] + list(values))
     return list(values) if choice == "All" else [choice]
 
