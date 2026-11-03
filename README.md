@@ -43,10 +43,10 @@ Answer five business questions for a retail e-commerce business:
 ## 3. Methodology
 | Step | Tool | Output |
 |---|---|---|
-| Data audit & cleaning | Excel / Python (`01_clean_data.py`) | `data/*.csv`, `docs/data_quality_report.md` |
+| Data audit & cleaning | Excel / Python (`scripts/01_clean_data.py`) | `data/*.csv`, `docs/data_quality_report.md` |
 | Star schema | fact_orders + dim_customer, dim_product, dim_date | `data/` |
 | Business queries | SQL (`sql/02_schema_and_queries.sql`) | 12 queries, tested |
-| Validation | `03_validate.py` | hand-check + pandas + SQL agree |
+| Validation | `scripts/03_validate.py` | hand-check + pandas + SQL agree |
 | Dashboard | Python, Streamlit, Plotly (`python_dashboard/`) | 5-page interactive dashboard with filters, deployed on Streamlit Community Cloud |
 
 **Data quality fixes:** 120 duplicate orders removed · 35 missing dates · 80 missing + 25 negative/zero quantities removed · 220 missing discounts → 0 · 449 missing payment methods → "Unknown" · city spelling fixed (`tehran`, `Mashad`) · 30 orders with unknown customers removed.
@@ -86,8 +86,8 @@ Answer five business questions for a retail e-commerce business:
 
 ## 8. How to run
 ```bash
-python 01_clean_data.py     # builds /data
-python 03_validate.py       # prints validation checks
+python scripts/01_clean_data.py     # builds /data (run from the repo root)
+python scripts/03_validate.py       # prints validation checks
 # load /data into PostgreSQL, run sql/02_schema_and_queries.sql
 cd python_dashboard && pip install -r requirements.txt && streamlit run app.py
 ```
