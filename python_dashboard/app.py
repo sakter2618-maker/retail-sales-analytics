@@ -116,13 +116,18 @@ page = st.radio("page", PAGES, horizontal=True, label_visibility="collapsed")
 f1, f2, f3, f4 = st.columns([2.2, 1, 1, 1])
 with f1:
     a, b = st.select_slider("Date range (month)", options=labels, value=(labels[-12], labels[-1]))
+def pick(label, values):
+    """Dropdown with 'All' on top (like the Power BI slicer). Returns the list of selected values."""
+    choice = st.selectbox(label, ["All"] + list(values))
+    return list(values) if choice == "All" else [choice]
+
+
 with f2:
-    regions = st.multiselect("Region", sorted(df["Region"].unique()), default=sorted(df["Region"].unique()))
+    regions = pick("Region", sorted(df["Region"].unique()))
 with f3:
-    cats = st.multiselect("Category", sorted(df["Category"].unique()), default=sorted(df["Category"].unique()))
+    cats = pick("Category", sorted(df["Category"].unique()))
 with f4:
-    segs = st.multiselect("Segment", sorted(df["CustomerSegment"].dropna().unique()),
-                          default=sorted(df["CustomerSegment"].dropna().unique()))
+    segs = pick("Segment", sorted(df["CustomerSegment"].dropna().unique()))
 
 start, end = pd.Timestamp(months[labels.index(a)]), pd.Timestamp(months[labels.index(b)])
 if not (regions and cats and segs):
