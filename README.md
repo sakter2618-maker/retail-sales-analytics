@@ -16,6 +16,23 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## 📸 Dashboard Screenshots
+
+**1. Executive Overview** — headline KPIs, monthly trend, category and region split, key findings
+![Executive Overview](page1_overview.png)
+
+**2. Sales Trend** — MoM / YoY growth, orders vs net sales, year-over-year months, region × month heatmap
+![Sales Trend](page2_sales_trend.png)
+
+**3. Product & Category** — top and fastest-declining category, sales vs profit bubbles, product matrix
+![Product and Category](page3_product_category.png)
+
+**4. Customer Analytics** — customer segments, repeat rate, revenue per customer, RFM
+![Customer Analytics](page4_customer_analytics.png)
+
+**5. Profit & Recommendations** — profit and margin, discount impact, margin heatmap, recommendations
+![Profit and Recommendations](page5_profit_%26_recommendations.png)
+
 ## 1. Project objective
 Answer five business questions for a retail e-commerce business:
 1. How is the business performing? 2. Are sales growing or falling? 3. Which products/categories win or lose? 4. Which customers are most valuable? 5. Where can profit be increased?
