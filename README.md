@@ -7,7 +7,7 @@
 
 **👉 [Open the interactive dashboard](https://retail-sales-analytics-9hmxelrt8quhekpdjudupp.streamlit.app/)** (Streamlit Community Cloud)
 
-5 pages — Executive Overview · Sales Trend · Product & Category · Customer Analytics · Profit & Recommendations — with filters for date range, region, category and customer segment. If the app is asleep, wait a few seconds for it to wake up.
+5 pages — Executive Overview · Sales Trend · Product & Category · Customer Analytics · Profit & Recommendations — with filters for date range, region, category and customer segment. > ⏱️ **Free hosting note:** the app runs on Streamlit Community Cloud's free tier, which puts idle apps to sleep. If you see a "gone to sleep" screen, click **"Yes, get this app back up!"** and wait about 30 seconds. A scheduled GitHub Action (`.github/workflows/keep-alive.yml`) visits the app every 6 hours to keep it awake.
 
 **Run it locally:**
 ```bash
@@ -19,19 +19,19 @@ streamlit run app.py
 ## 📸 Dashboard Screenshots
 
 **1. Executive Overview** — headline KPIs, monthly trend, category and region split, key findings
-![Executive Overview](page1_overview.png)
+![Executive Overview](images/page1_overview.png)
 
 **2. Sales Trend** — MoM / YoY growth, orders vs net sales, year-over-year months, region × month heatmap
-![Sales Trend](page2_sales_trend.png)
+![Sales Trend](images/page2_sales_trend.png)
 
 **3. Product & Category** — top and fastest-declining category, sales vs profit bubbles, product matrix
-![Product and Category](page3_product_category.png)
+![Product and Category](images/page3_product_category.png)
 
 **4. Customer Analytics** — customer segments, repeat rate, revenue per customer, RFM
-![Customer Analytics](page4_customer_analytics.png)
+![Customer Analytics](images/page4_customer_analytics.png)
 
 **5. Profit & Recommendations** — profit and margin, discount impact, margin heatmap, recommendations
-![Profit and Recommendations](page5_profit_%26_recommendations.png)
+![Profit and Recommendations](images/page5_profit_recommendations.png)
 
 ## 1. Project objective
 Answer five business questions for a retail e-commerce business:
