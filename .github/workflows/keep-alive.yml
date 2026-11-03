@@ -1,0 +1,23 @@
+name: Keep Streamlit app awake
+
+# Visits the live dashboard every 6 hours so the free Streamlit Cloud app does not go to sleep.
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:   # lets you run it by hand from the Actions tab
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Playwright and Chromium
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+      - name: Visit the app
+        run: python scripts/keep_alive.py
