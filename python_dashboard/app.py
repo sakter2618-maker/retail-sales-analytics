@@ -200,14 +200,14 @@ elif page == "Sales Trend":
     c[3].markdown(kpi("Units Sold", f"{K['units']:,}", ch["units"], (AMBER, PINK)), unsafe_allow_html=True)
     st.markdown("")
     fig = go.Figure()
-    fig.add_bar(x=mon["Month"], y=mon["Orders"], name="Orders", yaxis="y2", opacity=0.95,
+    fig.add_bar(x=mon["Month"], y=mon["Orders"], name="Orders", opacity=0.95,
                 marker=dict(color=mon["Orders"], colorscale=[[0, "#5B6CFF"], [0.5, "#A855F7"], [1, "#F472B6"]],
                             line=dict(width=0)))
-    fig.add_scatter(x=mon["Month"], y=mon["Sales"], name="Net Sales", mode="lines+markers",
+    fig.add_scatter(x=mon["Month"], y=mon["Sales"], name="Net Sales", mode="lines+markers", yaxis="y2",
                     line=dict(color="#2EE6FF", width=4),
                     marker=dict(size=10, color="#2EE6FF", line=dict(color="#FFFFFF", width=2)))
     fig.update_layout(bargap=0.35, title="Orders (columns) vs Net Sales (line)",
-                      yaxis=dict(title="Net Sales"), yaxis2=dict(title="Orders", overlaying="y", side="right", showgrid=False, color=MUTED))
+                      yaxis=dict(title="Orders"), yaxis2=dict(title="Net Sales", overlaying="y", side="right", showgrid=False, color=MUTED))
     show(style_fig(fig, 360, legend=True))
     l, r = st.columns(2)
     with l:
