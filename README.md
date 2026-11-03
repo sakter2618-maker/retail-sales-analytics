@@ -3,7 +3,18 @@
 
 <!-- Dashboard screenshots go in /images (one per page) and can be shown here. -->
 
-**Live dashboard:** deployed on Streamlit Community Cloud (link added once confirmed).
+## 🔴 Live Demo
+
+**👉 [Open the interactive dashboard](https://retail-sales-analytics-9hmxelrt8quhekpdjudupp.streamlit.app/)** (Streamlit Community Cloud)
+
+5 pages — Executive Overview · Sales Trend · Product & Category · Customer Analytics · Profit & Recommendations — with filters for date range, region, category and customer segment. If the app is asleep, wait a few seconds for it to wake up.
+
+**Run it locally:**
+```bash
+cd python_dashboard
+pip install -r requirements.txt
+streamlit run app.py
+```
 
 ## 1. Project objective
 Answer five business questions for a retail e-commerce business:
