@@ -252,10 +252,21 @@ elif page == "Product & Category":
                                text=[fmt_money(v) for v in s["Sales"]], textposition="outside", cliponaxis=False))
         show(style_fig(fig.update_layout(title="Net Sales by Category"), 330))
     with r:
-        fig = go.Figure(go.Scatter(x=cb["Sales"], y=cb["Profit"], mode="markers+text", text=cb["Category"],
-                                   textposition="top center", marker=dict(size=np.sqrt(cb["Orders"]) / 2 + 8,
-                                   color=CAT_COLORS[:len(cb)], line=dict(color=BG, width=1))))
-        show(style_fig(fig.update_layout(title="Net Sales vs Profit (bubble = orders)", xaxis_title="Net Sales", yaxis_title="Profit"), 330))
+        # each label gets its own direction so close bubbles never overlap
+        label_pos = ["bottom center", "top center", "top right", "bottom left", "top center", "top right"]
+        fig = go.Figure(go.Scatter(
+            x=cb["Sales"], y=cb["Profit"], mode="markers+text", text=cb["Category"],
+            textposition=[label_pos[i % len(label_pos)] for i in range(len(cb))],
+            textfont=dict(color=TEXT, size=12),
+            marker=dict(size=cb["Orders"], sizemode="area", sizeref=2.0 * max(cb["Orders"].max(), 1) / (46 ** 2),
+                        sizemin=10, color=CAT_COLORS[:len(cb)], opacity=0.9, line=dict(color="#FFFFFF", width=1.5)),
+            customdata=np.stack([cb["Orders"], cb["Margin"] * 100], axis=-1),
+            hovertemplate="<b>%{text}</b><br>Net Sales: %{x:,.0f}<br>Profit: %{y:,.0f}"
+                          "<br>Orders: %{customdata[0]:,.0f}<br>Margin: %{customdata[1]:.1f}%<extra></extra>"))
+        fig.update_layout(title="Net Sales vs Profit (bubble size = orders)",
+                          xaxis=dict(title="Net Sales", range=[0, cb["Sales"].max() * 1.18]),
+                          yaxis=dict(title="Profit", range=[0, cb["Profit"].max() * 1.25]))
+        show(style_fig(fig, 340))
     pr = M.products(cur, prev)
     pr["Product"] = np.where(pr["Growth"] < -0.20, "⚠ " + pr["ProductName"], pr["ProductName"])
     tbl = pr[["Product", "Category", "Sales", "Profit", "Margin", "Growth"]].reset_index(drop=True)
