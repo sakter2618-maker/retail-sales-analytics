@@ -95,3 +95,7 @@ cd python_dashboard && pip install -r requirements.txt && streamlit run app.py
 ## 9. Other portfolio projects
 - [SEO Growth Agent (n8n)](https://github.com/sakter2618-maker/n8n-seo-growth-agent): a scheduled automation that audits a website's SEO, saves results to Google Sheets, emails a weekly report and proposes fixes as pull requests.
 - [Sutokotha demo store](https://github.com/sakter2618-maker/sutokotha): the test website the agent audits ([live site](https://sakter2618-maker.github.io/sutokotha/)).
+
+## Author
+
+**Salma Akter** · Data Analyst & AI Automation · [salmaakter.me](https://salmaakter.me)
